@@ -169,7 +169,9 @@ function SetVehicleDeformation(vehicle, deformationPoints, callback)
 		    Log("Applying deformation finished for \"" .. tostring(GetVehicleNumberPlateText(vehicle)) .. "\"")
         end
 
-		callback()
+        if (callback) then
+		    callback()
+        end
 	end)
 end
 
