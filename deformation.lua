@@ -21,7 +21,7 @@
 
 
 -- set to true to see debug messages
-local isDebug = true
+local isDebug = false
 
 
 

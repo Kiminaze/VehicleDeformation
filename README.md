@@ -19,10 +19,9 @@ applying of vehicle bodywork deformation.
 This is actively been used in my paid script [AdvancedParking](https://forum.cfx.re/t/release-advancedparking-prevents-despawns/2099582) where you can park any vehicle 
 anywhere on the map completely dynamically.
 
-I decided to release this for free for everyone since this is nearly one-of-a-kind now. All akin 
-to: "It just works!"
+I decided to release this for free for everyone since this is nearly one-of-a-kind now.
 
-Showcase video: TBA
+Showcase video: https://www.youtube.com/watch?v=bxdsG5_DeXo
 
 
 ### Requirements
