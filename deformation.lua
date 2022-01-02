@@ -54,16 +54,23 @@ function GetVehicleDeformation(vehicle)
 		vector3(X, Y,  0.0),
 		vector3(X, Y,  Z),
 
-
 		vector3(-X, halfY,  0.0),
 		vector3(-X, halfY,  Z),
+		
+		vector3(-X, halfY + (halfY / 2),  0.0),
+		vector3(-X, halfY + (halfY / 2),  Z),
+		
+		vector3(-X, halfY - (halfY / 2),  0.0),
+		vector3(-X, halfY - (halfY / 2),  Z),
 
 		vector3(0.0, halfY,  0.0),
 		vector3(0.0, halfY,  Z),
 
-		vector3(X, halfY,  0.0),
-		vector3(X, halfY,  Z),
+		vector3(X, halfY + (halfY / 2),  0.0),
+		vector3(X, halfY + (halfY / 2),  Z),
 
+		vector3(X, halfY - (halfY / 2),  0.0),
+		vector3(X, halfY - (halfY / 2),  Z),
 
 		vector3(-X, 0.0,  0.0),
 		vector3(-X, 0.0,  Z),
@@ -74,16 +81,32 @@ function GetVehicleDeformation(vehicle)
 		vector3(X, 0.0,  0.0),
 		vector3(X, 0.0,  Z),
 
-
 		vector3(-X, -halfY,  0.0),
 		vector3(-X, -halfY,  Z),
+
+		vector3(-X, -(halfY + (halfY / 2)),  0.0),
+		vector3(-X, -(halfY + (halfY / 2)),  Z),
+
+		vector3(-X, -(halfY - (halfY / 2)),  0.0),
+		vector3(-X, -(halfY - (halfY / 2)),  Z),
 
 		vector3(0.0, -halfY,  0.0),
 		vector3(0.0, -halfY,  Z),
 
+		vector3(0.0, -(halfY + (halfY / 2)),  0.0),
+		vector3(0.0, -(halfY + (halfY / 2)),  Z),
+
+		vector3(0.0, -(halfY - (halfY / 2)),  0.0),
+		vector3(0.0, -(halfY - (halfY / 2)),  Z),
+
 		vector3(X, -halfY,  0.0),
 		vector3(X, -halfY,  Z),
 
+		vector3(X, -(halfY + (halfY / 2)),  0.0),
+		vector3(X, -(halfY + (halfY / 2)),  Z),
+
+		vector3(X, -(halfY - (halfY / 2)),  0.0),
+		vector3(X, -(halfY - (halfY / 2)),  Z),
 
 		vector3(-X, -Y,  0.0),
 		vector3(-X, -Y,  Z),
@@ -93,6 +116,132 @@ function GetVehicleDeformation(vehicle)
 
 		vector3(X, -Y,  0.0),
 		vector3(X, -Y,  Z),
+		
+		vector3(-(X / 2), Y,  0.0),
+		vector3(-(X / 2), Y,  Z),
+
+		vector3((X / 2), Y,  0.0),
+		vector3((X / 2), Y,  Z),
+
+		vector3(-(X / 2), halfY,  0.0),
+		vector3(-(X / 2), halfY,  Z),
+		
+		vector3(-(X / 2), halfY + (halfY / 2),  0.0),
+		vector3(-(X / 2), halfY + (halfY / 2),  Z),
+		
+		vector3(-(X / 2), halfY - (halfY / 2),  0.0),
+		vector3(-(X / 2), halfY - (halfY / 2),  Z),
+		vector3((X / 2), halfY + (halfY / 2),  0.0),
+		vector3((X / 2), halfY + (halfY / 2),  Z),
+
+		vector3((X / 2), halfY - (halfY / 2),  0.0),
+		vector3((X / 2), halfY - (halfY / 2),  Z),
+
+		vector3(-(X / 2), 0.0,  0.0),
+		vector3(-(X / 2), 0.0,  Z),
+
+		vector3(-(X / 2), -halfY,  0.0),
+		vector3(-(X / 2), -halfY,  Z),
+
+		vector3(-(X / 2), -(halfY + (halfY / 2)),  0.0),
+		vector3(-(X / 2), -(halfY + (halfY / 2)),  Z),
+
+		vector3(-(X / 2), -(halfY - (halfY / 2)),  0.0),
+		vector3(-(X / 2), -(halfY - (halfY / 2)),  Z),
+
+		vector3((X / 2), -halfY,  0.0),
+		vector3((X / 2), -halfY,  Z),
+
+		vector3((X / 2), -(halfY + (halfY / 2)),  0.0),
+		vector3((X / 2), -(halfY + (halfY / 2)),  Z),
+
+		vector3((X / 2), -(halfY - (halfY / 2)),  0.0),
+		vector3((X / 2), -(halfY - (halfY / 2)),  Z),
+
+		vector3(-(X / 2), -Y,  0.0),
+		vector3(-(X / 2), -Y,  Z),
+
+		vector3((X / 2), -Y,  0.0),
+		vector3((X / 2), -Y,  Z),
+		vector3(-X, Y,  -Z),
+
+		vector3(0.0, Y,  -Z),
+
+		vector3(X, Y,  -Z),
+
+		vector3(-X, halfY,  -Z),
+		
+		vector3(-X, halfY + (halfY / 2),  -Z),
+		
+		vector3(-X, halfY - (halfY / 2),  -Z),
+
+		vector3(0.0, halfY,  -Z),
+
+		vector3(X, halfY + (halfY / 2),  -Z),
+
+		vector3(X, halfY - (halfY / 2),  -Z),
+
+		vector3(-X, 0.0,  -Z),
+
+		vector3(0.0, 0.0,  -Z),
+
+		vector3(X, 0.0,  -Z),
+
+		vector3(-X, -halfY,  -Z),
+
+		vector3(-X, -(halfY + (halfY / 2)),  -Z),
+
+		vector3(-X, -(halfY - (halfY / 2)),  -Z),
+
+		vector3(0.0, -halfY,  -Z),
+
+		vector3(0.0, -(halfY + (halfY / 2)),  -Z),
+
+		vector3(0.0, -(halfY - (halfY / 2)),  -Z),
+
+		vector3(X, -halfY,  -Z),
+
+		vector3(X, -(halfY + (halfY / 2)),  -Z),
+
+		vector3(X, -(halfY - (halfY / 2)),  -Z),
+
+		vector3(-X, -Y,  -Z),
+
+		vector3(0.0, -Y,  -Z),
+
+		vector3(X, -Y,  -Z),
+		
+		vector3(-(X / 2), Y,  -Z),
+
+		vector3((X / 2), Y,  -Z),
+
+		vector3(-(X / 2), halfY,  -Z),
+		
+		vector3(-(X / 2), halfY + (halfY / 2),  -Z),
+		
+		vector3(-(X / 2), halfY - (halfY / 2),  -Z),
+		vector3((X / 2), halfY + (halfY / 2),  -Z),
+
+		vector3((X / 2), halfY - (halfY / 2),  -Z),
+
+		vector3(-(X / 2), 0.0,  -Z),
+
+		vector3(-(X / 2), -halfY,  -Z),
+
+		vector3(-(X / 2), -(halfY + (halfY / 2)),  -Z),
+
+		vector3(-(X / 2), -(halfY - (halfY / 2)),  -Z),
+
+		vector3((X / 2), -halfY,  -Z),
+
+		vector3((X / 2), -(halfY + (halfY / 2)),  -Z),
+
+		vector3((X / 2), -(halfY - (halfY / 2)),  -Z),
+
+
+		vector3(-(X / 2), -Y,  -Z),
+
+		vector3((X / 2), -Y,  -Z),
 	}
 
 	-- get deformation from vehicle
@@ -118,10 +267,10 @@ function SetVehicleDeformation(vehicle, deformationPoints, callback)
 	Citizen.CreateThread(function()
 		-- set radius and damage multiplier
 		local min, max = GetModelDimensions(GetEntityModel(vehicle))
-		local radius = #(max - min) * 40.0			-- might need some more experimentation
-		local damageMult = #(max - min) * 30.0		-- might need some more experimentation
+		local radius = #(max - min) * 50.0			-- might need some more experimentation
+		local damageMult = #(max - min) * 50.0		-- might need some more experimentation
         
-        local printMsg = false
+		local printMsg = false
 
 		for i, def in ipairs(deformationPoints) do
 			def[1] = vector3(def[1].x, def[1].y, def[1].z)
