@@ -65,6 +65,9 @@ function GetVehicleDeformation(vehicle)
 
 		vector3(0.0, halfY,  0.0),
 		vector3(0.0, halfY,  Z),
+		
+		vector3(X, halfY,  0.0),
+		vector3(X, halfY,  Z),
 
 		vector3(X, halfY + (halfY / 2),  0.0),
 		vector3(X, halfY + (halfY / 2),  Z),
