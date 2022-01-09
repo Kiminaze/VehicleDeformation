@@ -82,3 +82,6 @@ exports["VehicleDeformation"]:FixVehicleDeformation(vehicle)
 
 
 ### Patchnotes
+
+Hotfix v1.0.1:
+- Fixed FixVehicleDeformation export from the example not syncing to every client properly.

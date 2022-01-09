@@ -3,7 +3,7 @@ games { 'gta5' }
 
 author 'Philipp Decker'
 description 'Vehicle deformation getting/setting'
-version '1.0'
+version '1.0.1'
 
 client_script 'deformation.lua'
 

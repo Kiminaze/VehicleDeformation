@@ -15,6 +15,8 @@ AddEventHandler("VehicleDeformation:fix_sv", function(netId)
     if (DoesEntityExist(vehicle)) then
         Entity(vehicle).state.deformations = {}
 
+        Citizen.Wait(1000)
+
         TriggerClientEvent("VehicleDeformation:fix_cl", -1, netId)
     end
 end)
