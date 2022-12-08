@@ -1,12 +1,20 @@
-fx_version 'cerulean'
-games { 'gta5' }
 
-author 'Philipp Decker'
-description 'Vehicle deformation getting/setting'
-version '1.0.1'
+fx_version "cerulean"
+games { "gta5" }
 
-client_script 'deformation.lua'
+author "Philipp Decker"
+description "Vehicle deformation getting/setting including synchronisation via entity state bags."
+version "2.0.0"
 
--- disable if using own implementation
-server_script 'example_sv.lua'
-client_script 'example_cl.lua'
+dependencies {
+	"/onesync"
+}
+
+client_scripts {
+	"deformation.lua",
+	"client.lua"
+}
+
+server_scripts {
+	"server.lua"
+}
