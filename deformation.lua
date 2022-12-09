@@ -17,7 +17,7 @@ function GetVehicleDeformation(vehicle)
 	local deformationPoints = {}
 	for i, offset in ipairs(offsets) do
 		-- translate damage from vector3 to a float
-		local dmg = #(GetVehicleDeformationAtPos(vehicle, offset))
+		local dmg = math.floor(#(GetVehicleDeformationAtPos(vehicle, offset)) * 1000.0) / 1000.0
 		if (dmg > DEFORMATION_DAMAGE_THRESHOLD) then
 			table.insert(deformationPoints, { offset, dmg })
 		end
