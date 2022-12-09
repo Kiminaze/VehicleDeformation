@@ -45,7 +45,7 @@ https://www.youtube.com/watch?v=bxdsG5_DeXo
 
 ## Performance
 
-- Client Side: TBD
+- Client Side: idle: 0.00ms; while applying deformation: 0.01ms
 - Server Side: 0.00ms
 
 
