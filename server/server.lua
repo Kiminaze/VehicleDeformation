@@ -1,5 +1,4 @@
 
--- fix vehicle deformation
 function FixVehicleDeformation(vehicle)
 	assert(vehicle and DoesEntityExist(vehicle), "Parameter \"vehicle\" must be a valid vehicle entity!")
 

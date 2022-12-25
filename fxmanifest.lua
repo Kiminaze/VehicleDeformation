@@ -11,10 +11,10 @@ dependencies {
 }
 
 client_scripts {
-	"deformation.lua",
-	"client.lua"
+	"client/deformation.lua",
+	"client/client.lua"
 }
 
 server_scripts {
-	"server.lua"
+	"server/server.lua"
 }

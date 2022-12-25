@@ -23,7 +23,8 @@ Fully compatible to my paid script [AdvancedParking](https://forum.cfx.re/t/rele
 where you can park any vehicle anywhere in the world.
 
 Showcase video:
-https://www.youtube.com/watch?v=bxdsG5_DeXo
+
+
 
 
 ### Requirements
