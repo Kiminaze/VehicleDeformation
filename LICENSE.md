@@ -1,6 +1,7 @@
+
 Custom license
 
-Copyright (c) 2021-2022 Philipp Decker
+Copyright (c) 2021-2023 Philipp Decker
 
 By acquiring a copy of this resource for the "FiveM" modification for "Grand Theft Auto V" you 
 are granted permission to use and modify all of its parts. However you are not allowed to publish 
