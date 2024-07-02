@@ -4,7 +4,10 @@ games { "gta5" }
 
 author "Philipp Decker"
 description "Vehicle deformation getting/setting including synchronisation via entity state bags."
-version "2.0.0"
+version "2.1.0"
+
+lua54 "yes"
+use_experimental_fxv2_oal "yes"
 
 dependencies {
 	"/onesync"
@@ -16,5 +19,6 @@ client_scripts {
 }
 
 server_scripts {
+	"server/versionChecker.lua",
 	"server/server.lua"
 }

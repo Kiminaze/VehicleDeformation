@@ -1,69 +1,63 @@
 
+local function ApplyDeformation(vehicle, deformation)
+	if (not IsEntityAVehicle(vehicle)) then return end
+
+	Wait(500)
+
+	if (not DoesEntityExist(vehicle)) then return end
+
+	if (deformation and #deformation > 0) then
+		SetVehicleDeformation(vehicle, deformation)
+	else
+		SetVehicleDeformationFixed(vehicle)
+	end
+end
+
+local damageUpdate = {}
+local function HandleDeformationUpdate(vehicle)
+	if (damageUpdate[vehicle]) then
+		damageUpdate[vehicle] = GetGameTimer() + 1000
+		return
+	end
+
+	damageUpdate[vehicle] = GetGameTimer() + 1000
+
+	while (damageUpdate[vehicle] > GetGameTimer()) do
+		Wait(0)
+	end
+
+	damageUpdate[vehicle] = nil
+
+	if (not DoesEntityExist(vehicle) or NetworkGetEntityOwner(vehicle) ~= PlayerId()) then return end
+
+	local deformation = GetVehicleDeformation(vehicle)
+	if (not IsDeformationEqual(deformation, Entity(vehicle).state["deformation"])) then
+		Entity(vehicle).state:set("deformation", deformation, true)
+	end
+end
+
 -- state bag handler to apply any deformation
 AddStateBagChangeHandler("deformation", nil, function(bagName, key, value, _unused, replicated)
 	if (bagName:find("entity") == nil) then return end
 
-	local networkIdString = bagName:gsub("entity:", "")
-	local networkId = tonumber(networkIdString)
-	if (not WaitUntilEntityWithNetworkIdExists(networkId, 5000)) then return end
-
-	local vehicle = NetworkGetEntityFromNetworkId(networkId)
-	--if (not WaitUntilEntityExists(vehicle, 5000)) then return end
-
-	if (#value > 0) then
-		SetVehicleDeformation(vehicle, value)
-	else
-		SetVehicleDeformationFixed(vehicle)
-	end
+	ApplyDeformation(GetEntityFromStateBagName(bagName), value)
 end)
 
--- loop to get deformation on current vehicle
-Citizen.CreateThread(function()
-	while (true) do
-		Citizen.Wait(5000)
+-- update state bag on taking damage
+AddEventHandler("gameEventTriggered", function (name, args)
+	if (name ~= "CEventNetworkEntityDamage") then return end
 
-		local playerPed = PlayerPedId()
-		local vehicle = GetVehiclePedIsIn(playerPed)
-		if (DoesEntityExist(vehicle) and GetPedInVehicleSeat(vehicle, -1) == playerPed) then
-			local deformation = GetVehicleDeformation(vehicle)
-			if (not IsDeformationEqual(deformation, Entity(vehicle).state["deformation"])) then
-				Entity(vehicle).state:set("deformation", deformation, true)
-			end
-		end
-	end
+	local entity = args[1]
+	if (not IsEntityAVehicle(entity)) then return end
+
+	HandleDeformationUpdate(entity)
 end)
 
 -- fix deformation on vehicle
-function FixVehicleDeformation(vehicle)
+local function FixVehicleDeformation(vehicle)
 	assert(DoesEntityExist(vehicle) and NetworkGetEntityIsNetworked(vehicle), "Parameter \"vehicle\" must be a valid and networked vehicle entity!")
 
 	TriggerServerEvent("VD:fixDeformation", NetworkGetNetworkIdFromEntity(vehicle))
 end
-
-
-
--- waits until a given network id exists and returns true if it was found before hitting the timeout
-function WaitUntilEntityWithNetworkIdExists(networkId, timeout)
-	local threshold = GetGameTimer() + timeout
-
-	while (not NetworkDoesEntityExistWithNetworkId(networkId) and GetGameTimer() < threshold) do
-		Citizen.Wait(0)
-	end
-
-	return NetworkDoesEntityExistWithNetworkId(networkId)
-end
-
--- waits until a given entity handle exists and returns true if it was found before hitting the timeout
-function WaitUntilEntityExists(entityHandle, timeout)
-	local threshold = GetGameTimer() + timeout
-
-	while (not DoesEntityExist(entityHandle) and GetGameTimer() < threshold) do
-		Citizen.Wait(0)
-	end
-
-	return DoesEntityExist(entityHandle)
-end
-
-
 
 exports("FixVehicleDeformation", FixVehicleDeformation)

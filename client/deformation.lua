@@ -7,6 +7,8 @@ local MAX_DEFORM_ITERATIONS = 50
 -- the minimum damage value at a deformation point before being registered as actual damage
 local DEFORMATION_DAMAGE_THRESHOLD = 0.05
 
+local math_floor = math.floor
+
 -- gets deformation from a vehicle
 function GetVehicleDeformation(vehicle)
 	assert(vehicle ~= nil and DoesEntityExist(vehicle), "Parameter \"vehicle\" must be a valid vehicle entity!")
@@ -17,7 +19,7 @@ function GetVehicleDeformation(vehicle)
 	local deformationPoints = {}
 	for i, offset in ipairs(offsets) do
 		-- translate damage from vector3 to a float
-		local dmg = math.floor(#(GetVehicleDeformationAtPos(vehicle, offset)) * 1000.0) / 1000.0
+		local dmg = Round(#(GetVehicleDeformationAtPos(vehicle, offset.x, offset.y, offset.z)), 3)
 		if (dmg > DEFORMATION_DAMAGE_THRESHOLD) then
 			table.insert(deformationPoints, { offset, dmg })
 		end
@@ -36,7 +38,7 @@ function SetVehicleDeformation(vehicle, deformationPoints, callback)
 	-- ignore if deformation is already worse
 	if (not IsDeformationWorse(deformationPoints, GetVehicleDeformation(vehicle))) then return end
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		-- set damage multiplier from vehicle handling data
 		local fDeformationDamageMult = GetVehicleHandlingFloat(vehicle, "CHandlingData", "fDeformationDamageMult")
 		local damageMult = 20.0
@@ -68,10 +70,10 @@ function SetVehicleDeformation(vehicle, deformationPoints, callback)
 
 			-- apply deformation if necessary
 			for i, def in ipairs(deformationPoints) do
-				if (#(GetVehicleDeformationAtPos(vehicle, def[1])) < def[2]) then
+				if (#(GetVehicleDeformationAtPos(vehicle, def[1].x, def[1].y, def[1].z)) < def[2]) then
 					SetVehicleDamage(
 						vehicle, 
-						def[1] * 2.0, 
+						def[1].x * 2.0, def[1].y * 2.0, def[1].z * 2.0, 
 						def[2] * damageMult, 
 						1000.0, 
 						true
@@ -83,7 +85,7 @@ function SetVehicleDeformation(vehicle, deformationPoints, callback)
 
 			iteration = iteration + 1
 
-			Citizen.Wait(100)
+			Wait(100)
 		end
 
 		LogDebug("Applying deformation finished for \"" .. tostring(GetVehicleNumberPlateText(vehicle)) .. "\"")
@@ -209,12 +211,12 @@ end
 
 -- rounds a float to the given number of decimals
 function Round(value, numDecimals)
-	return math.floor(value * 10^numDecimals) / 10^numDecimals
+	return math_floor(value * 10^numDecimals) / 10^numDecimals
 end
 
 function LogDebug(text, ...)
 	if (DEBUG) then
-		print(string.format(string.format("^0[DEBUG] %s^0", text), ...))
+		print(("^0[DEBUG] %s^0"):format(text):format(...))
 	end
 end
 
