@@ -37,4 +37,4 @@ https://discord.kiminaze.de
 
 ## 📖 Documentation
 
-https://docs.kiminaze.de/free-scripts/vehicleseformation
+https://docs.kiminaze.de/free-scripts/vehicledeformation
