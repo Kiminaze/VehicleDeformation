@@ -20,7 +20,8 @@ The user is not allowed to publish and/or distribute the software, copies of the
 the software and/or modifications of the software apart from forking the official repository on 
 GitHub. However - for the software to function properly within the environment - distribution of 
 the necessary client side files via the FiveM server is permitted, provided these files have been 
-legally acquired.
+legally acquired. Exceptions are possible if explicit written permission has been granted by the 
+copyright holder.
 
 By using this software the user is accepting this license and by updating the software any 
 potential changes are accepted as well.
