@@ -4,7 +4,7 @@ games { "gta5" }
 
 author "Philipp Decker"
 description "Vehicle deformation getting/setting including synchronisation via entity state bags."
-version "2.2.0"
+version "3.0.0"
 
 lua54 "yes"
 use_experimental_fxv2_oal "yes"
