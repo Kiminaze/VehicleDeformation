@@ -68,7 +68,10 @@ local function HandleDeformationUpdate(vehicle)
 
 	if (not DoesEntityExist(vehicle) or NetworkGetEntityOwner(vehicle) ~= PlayerId()) then return end
 
-	Entity(vehicle).state:set("deformation", GetVehicleDeformation(vehicle), true)
+	local deformation = GetVehicleDeformation(vehicle)
+	if (deformation and #deformation > 0) then
+		Entity(vehicle).state:set("deformation", deformation, true)
+	end
 end
 
 -- state bag handler to apply any deformation
